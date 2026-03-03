@@ -1,7 +1,11 @@
+
+
 ## Tech Stack
 
 - **Electron `40.x`** – desktop runtime.
 - **React `19.x` & React DOM `19.x`** – UI library.
+- **Tanstack Query** - fetching
+- **Tailwind `4`** - styling CSS
 - **React Router DOM `7.x`** – routing in the renderer.
 - **TypeScript `~4.5`** – main language for source code.
 - **Webpack** with loaders such as `ts-loader`, `css-loader`, `@tailwindcss/webpack`, etc.
@@ -53,12 +57,7 @@ These commands will produce artifacts under the `out/` directory (which is alrea
 ---
 
 
-- Modify the UI in `src/App.tsx` and add new routes via `react-router-dom`.
-- Adjust global styling in `src/styles.css` / `src/index.css` and tune Tailwind configuration as needed.
-- Update `forge.config.ts` if you want to change or add distribution targets (e.g. only zip, add AppImage, etc.).
-- For communication between the main and renderer processes, expose safe APIs through `preload.ts`.
 
----
 
 ## License
 
