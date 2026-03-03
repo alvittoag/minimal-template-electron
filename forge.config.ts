@@ -1,5 +1,4 @@
 import type { ForgeConfig } from '@electron-forge/shared-types';
-import { MakerSquirrel } from '@electron-forge/maker-squirrel';
 import { MakerZIP } from '@electron-forge/maker-zip';
 import { MakerDeb } from '@electron-forge/maker-deb';
 import { MakerRpm } from '@electron-forge/maker-rpm';
@@ -18,11 +17,15 @@ const config: ForgeConfig = {
   },
   rebuildConfig: {},
   makers: [
-    new MakerSquirrel({}),
-    new MakerZIP({}, ['darwin']),
+    // Windows: ZIP only (Squirrel .exe requires Mono+Wine when building from Mac/Linux)
+    new MakerZIP({}, ['win32']),
+    // Linux: .deb + .rpm + ZIP
+    new MakerDeb({}, ['linux']),
+    new MakerRpm({}, ['linux']),
+    new MakerZIP({}, ['linux']),
+    // macOS: DMG + ZIP
     new MakerDMG({}, ['darwin']),
-    new MakerRpm({}),
-    new MakerDeb({}),
+    new MakerZIP({}, ['darwin']),
   ],
   plugins: [
     new AutoUnpackNativesPlugin({}),

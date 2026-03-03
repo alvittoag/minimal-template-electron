@@ -54,6 +54,17 @@ npm run make
 
 These commands will produce artifacts under the `out/` directory (which is already ignored by `.gitignore`).
 
+### Build per platform (Windows, Linux, macOS)
+
+| Command | Platform | Output |
+|---------|----------|--------|
+| `npm run make` | Current OS | Installer/zip for the OS you're on |
+| `npm run make:win` | Windows | ZIP (portable; run the .exe inside the zip) |
+| `npm run make:linux` | Linux | .deb + .rpm + ZIP |
+| `npm run make:mac` | macOS | .dmg + ZIP |
+
+**Note:** Building for Windows (ZIP) can be run from Mac/Linux without Mono/Wine. To get a Windows installer (.exe / Squirrel), run `npm run make` on a Windows machine and add the maker: `@electron-forge/maker-squirrel`, then add `new MakerSquirrel({}, ['win32'])` in `forge.config.ts`. For multi-platform automation, use CI (e.g. GitHub Actions) with one job per OS.
+
 ---
 
 
